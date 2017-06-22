@@ -1,3 +1,9 @@
+/**
+ * @auth:alpsln 
+ * 利用superagent来对ajax进行分类处理
+ * note01: formatUrl（F） =>根据Url的不同情况，来进行解析
+ * note02:ApiClient (C)=>用于根据发起的Ajax的类型(post/get、、、)来进行请求的封装
+ */
 import superagent from 'superagent';
 import config from '../config';
 

@@ -1,3 +1,9 @@
+/**
+ * 
+ * @param {*用于定义的ajax的处理方式} client 
+ * 用于在redux中action creater中进行三种状态的处理(SUCCESS,FAIL,LOADING)
+ * 自己定义的一个middleware，具体的实现还是需要参看react源码
+ */
 export default function clientMiddleware(client) {
   return ({dispatch, getState}) => {
     return next => action => {

@@ -1,20 +1,43 @@
 /**
  * THIS IS THE ENTRY POINT FOR THE CLIENT, JUST LIKE server.js IS THE ENTRY POINT FOR THE SERVER.
+ * @auth:alpsln  此文件是系统入口
+ * note00:createStore (F)=>用于项目Store的增强
+ * note01:ApiClient（C）=>用于处理Ajax
+ * note02:io(C)=>用于建立Stock
+ * note03:Provider(F) =>用于将redux与React进行关联
+ * note04:Router(COM),browserHistory(O)=>将URL作为系统状态
+ * note05:syncHistoryWithStory(F)=>将React Router 与 Redux store 绑定
+ * note06:ReduxAsyncConnect （COM）=>用于数据的预加载(跟人感觉这是为了服务器加载用的)
+ * 
  */
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
+// 进行createStore的增强
 import createStore from './redux/create';
+// ApiClient（C）=>用于处理Ajax
 import ApiClient from './helpers/ApiClient';
+// io(C)=>用于建立Stock
 import io from 'socket.io-client';
+// Provider(F) =>用于将redux与React进行关联
 import {Provider} from 'react-redux';
+// Router(COM),browserHistory(O)=>将URL作为系统状态
 import { Router, browserHistory } from 'react-router';
+// syncHistoryWithStory(F)=>将React Router 与 Redux store 绑定
 import { syncHistoryWithStore } from 'react-router-redux';
+// ReduxAsyncConnect （COM）=>用于数据的预加载(跟人感觉这是为了服务器加载用的)
 import { ReduxAsyncConnect } from 'redux-async-connect';
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
-
+// 获取定义好的路由文件
 import getRoutes from './routes';
-
+/**
+ * 定义项目的顶层设计
+ * 1：ajax的处理方式
+ * 2：Router路由的嵌入
+ * 3：redux中store的增强和嵌入
+ * 4：React router和Redux的绑定
+ *
+ */
 const client = new ApiClient();
 const _browserHistory = useScroll(() => browserHistory)();
 const dest = document.getElementById('content');

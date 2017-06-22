@@ -72,7 +72,11 @@ export default function reducer(state = initialState, action = {}) {
       return state;
   }
 }
-
+/**
+ * 
+ * @param {*通过store.getSate()获取到Redux的全局对象} globalState 
+ * 
+ */
 export function isLoaded(globalState) {
   return globalState.auth && globalState.auth.loaded;
 }
